@@ -264,8 +264,12 @@ const getBonusNumber = () => {
 };
 const readLottoPrice = (validator, renderer) => {
   const purchaseForm = document.querySelector(".purchase-form");
+  const purchaseContainer = document.querySelector(".purchase-container");
   purchaseForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    purchaseContainer.querySelectorAll("input, button").forEach((element) => {
+      element.disabled = true;
+    });
     const price = getPrice();
     const isValidPrice = validator(price);
     if (isValidPrice) {
@@ -275,10 +279,10 @@ const readLottoPrice = (validator, renderer) => {
 };
 const readWinningNumbers = (validator, renderer) => {
   const winningLottoForm = document.querySelector(".winning-lotto-form");
-  const purchaseContainer = document.querySelector(".purchase-container");
+  const numbersContainer = document.querySelector(".numbers-container");
   winningLottoForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    purchaseContainer.querySelectorAll("input, button").forEach((element) => {
+    numbersContainer.querySelectorAll("input").forEach((element) => {
       element.disabled = true;
     });
     const winningNumbers = getWinningNumbers();

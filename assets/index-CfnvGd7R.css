@@ -179,7 +179,7 @@ tr {
 }
 
 *:disabled {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 header {
   width: 100%;
