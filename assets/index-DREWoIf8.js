@@ -43,7 +43,7 @@ var _isFrozen;
     fetch(link.href, fetchOpts);
   }
 })();
-const headerContents = '<header>\n  <a href="/">\n    <h1>🎱 행운의 로또</h1>\n  </a>\n</header>\n';
+const headerContents = '<header>\n  <a href="/javascript-lotto">\n    <h1>🎱 행운의 로또</h1>\n  </a>\n</header>\n';
 const appendContents = (parentSelector, childSelector, contents) => {
   const parentElement = document.querySelector(parentSelector);
   const childElement = parentElement.querySelector(childSelector);
