@@ -1,0 +1,407 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --lotto-primary: #4e5ba6;
+  --lotto-greyscale-1: #ffffff;
+  --lotto-greyscale-2: #fcfcfd;
+  --lotto-greyscale-3: #b4b4b4;
+  --lotto-greyscale-4: #8b8b8b;
+  --lotto-greyscale-5: #000000;
+
+  --bg-default-color: #fbfbfd;
+  --border-default-color: #e4e4e4;
+
+  --default-padding: 16px;
+
+  --default-font-family: Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-default-color);
+  font-family: var(--default-font-family);
+  overflow-x: hidden;
+}
+
+#app {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex-shrink: 0;
+}
+
+main {
+  margin: 84px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  background-color: var(--bg-default-color);
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  color: var(--lotto-greyscale-1);
+}
+
+h2 {
+  margin: calc(40px - var(--default-padding)) 0 40px 0;
+
+  font-weight: 600;
+  color: var(--lotto-greyscale-5);
+  text-align: center;
+}
+
+h3 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+label {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+input {
+  border: 1px solid var(--lotto-greyscale-3);
+  border-radius: 4px;
+}
+
+input::placeholder {
+  color: var(--lotto-greyscale-3);
+}
+
+input:focus {
+  outline-color: var(--lotto-primary);
+}
+
+input[type="number"] {
+  appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+button {
+  width: 100%;
+  height: 36px;
+
+  background-color: var(--lotto-primary);
+  border: none;
+  border-radius: 4px;
+
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--lotto-greyscale-1);
+  letter-spacing: 1.25px;
+  line-height: 16px;
+}
+
+button:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}
+
+a {
+  all: unset;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+p {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+li {
+  list-style-type: none;
+}
+
+dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+
+  background-color: var(--lotto-greyscale-1);
+  border: none;
+  border-radius: 4px;
+}
+
+dialog::backdrop {
+  background-color: var(--lotto-greyscale-5);
+  opacity: 0.5;
+}
+
+table {
+  border-collapse: collapse;
+
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 8px 8px 8px 0;
+}
+
+tr {
+  border: solid var(--border-default-color);
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
+header {
+  width: 100%;
+  height: 64px;
+  background-color: var(--lotto-primary);
+}
+
+header > a {
+  top: 14px;
+  left: 130px;
+  position: relative;
+}
+.game-container {
+  width: 414px;
+  height: 727px;
+  max-height: 100%;
+  padding: var(--default-padding);
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--lotto-greyscale-1);
+  border: 1px solid var(--border-default-color);
+}
+
+.game-container > h2 {
+  width: 100%;
+  height: 36px;
+
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.purchase-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.purchase-form > label {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.purchase-container {
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.purchase-container > input {
+  width: 310px;
+  padding-left: 8px;
+}
+
+.purchase-container > button {
+  width: 56px;
+  height: 100%;
+}
+.winning-lotto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.numbers-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.numbers-container input {
+  width: 34px;
+  height: 36px;
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.numbers-container input:not(:last-child) {
+  margin-right: 8px;
+}
+
+.bonus-number-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.winning-lotto-form > button {
+  width: 100%;
+  height: 36px;
+  margin: 28px 0;
+}
+footer {
+  width: 100%;
+  height: 80px;
+
+  border-top: 1px solid var(--border-default-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: var(--lotto-primary);
+}
+.lotto-container {
+  width: 100%;
+  height: 310px;
+  margin: 28px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  overflow-y: scroll;
+}
+
+.lotto-numbers {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lotto-icon {
+  font-weight: 600;
+  font-size: 34px;
+  letter-spacing: 0px;
+}
+.error-alert-modal[open] {
+  width: 500px;
+  height: 200px;
+  padding: var(--default-padding);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.alert-container > p {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.alert-container > button {
+  width: 70px;
+  height: 30px;
+}
+.prize-result-modal[open] {
+  width: 350px;
+  height: 500px;
+  padding: var(--default-padding);
+
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-container > h2 {
+  height: 24px;
+
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.result-container > h3 {
+  height: 24px;
+  margin: 32px 0;
+
+  font-weight: 600;
+  font-size: 110%;
+}
+
+.result-container tr {
+  border-width: 1px 0;
+}
+
+.restart-button {
+  font-weight: 700;
+}
+
+.result-container > .close-button {
+  all: unset;
+
+  width: 14px;
+  height: 14px;
+
+  position: fixed;
+  align-self: end;
+}
+
+.close-button > img {
+  width: 100%;
+  height: 100%;
+}
