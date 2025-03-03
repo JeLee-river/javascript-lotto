@@ -392,13 +392,13 @@ footer {
 }
 
 .result-container > .close-button {
-  all: unset;
-
   width: 14px;
   height: 14px;
 
   position: fixed;
   align-self: end;
+
+  background: none;
 }
 
 .close-button > img {
