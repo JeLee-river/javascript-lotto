@@ -315,12 +315,12 @@ const restartGame = () => {
     location.replace(location.href);
   });
 };
-const errorAlertContents = '<div class="alert-container">\n  <p class="error-message" data-type="dynamic"></p>\n  <button class="close-button close-alert">확인</button>\n</div>\n\n';
+const errorAlertContents = '<div class="alert-container">\n  <p class="error-message" data-type="dynamic"></p>\n  <button type="button" class="close-button close-alert">확인</button>\n</div>\n\n';
 const createErrorAlertModal = (message) => {
   appendContents(".error-alert-modal", ".alert-container", errorAlertContents);
   insertTextContents(".error-message", message);
 };
-const prizeResultContents = '<div class="result-container">\n  <button class="close-button">\n    <img src="close-icon.png" alt="close-icon" />\n  </button>\n  <h2>🏆 당첨 통계 🏆</h2>\n  <table>\n    <thead class="prize-table-header" data-type="dynamic"></thead>\n    <tbody class="prize-table-body" data-type="dynamic"></tbody>\n  </table>\n  <h3 class="revenue-rate-message" data-type="dynamic"></h3>\n  <button class="restart-button">다시 시작하기</button>\n</div>\n';
+const prizeResultContents = '<div class="result-container">\n  <button type="button" class="close-button">\n    <img src="close-icon.png" alt="close-icon" />\n  </button>\n  <h2>🏆 당첨 통계 🏆</h2>\n  <table>\n    <thead class="prize-table-header" data-type="dynamic"></thead>\n    <tbody class="prize-table-body" data-type="dynamic"></tbody>\n  </table>\n  <h3 class="revenue-rate-message" data-type="dynamic"></h3>\n  <button type="button" class="restart-button">다시 시작하기</button>\n</div>\n';
 const PRIZE_RESULT = {
   HEADERS: ["일치갯수", "당첨금", "당첨갯수"],
   LOTTO_UNIT: "개",
@@ -423,16 +423,28 @@ const hasNotInteger = (array) => {
 };
 const validateLottoPrice = (price) => {
   if (!Number.isSafeInteger(price)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_INTEGER, ERROR_PREFIX.typeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_INTEGER,
+      ERROR_PREFIX.typeError
+    );
   }
   if (!isInRange(price, LOTTO_RULE.MIN_PRICE)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_MIN_PRICE, ERROR_PREFIX.rangeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_MIN_PRICE,
+      ERROR_PREFIX.rangeError
+    );
   }
   if (!isMultipleOf(price, LOTTO_RULE.MULTIPLE_PRICE)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_MULTIPLE_OF_THOUSAND, ERROR_PREFIX.invalidInputError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_MULTIPLE_OF_THOUSAND,
+      ERROR_PREFIX.invalidInputError
+    );
   }
   if (!isInRange(price, null, LOTTO_RULE.MAX_PRICE)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_OVER_MAX_PRICE, ERROR_PREFIX.rangeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_OVER_MAX_PRICE,
+      ERROR_PREFIX.rangeError
+    );
   }
 };
 const generateLottoNumbers = () => {
@@ -453,10 +465,16 @@ const generateLottoNumberSets = (price) => {
 };
 const validateWinningNumbers = (winningNumbers) => {
   if (winningNumbers.length !== LOTTO_RULE.LOTTO_LENGTH) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_LOTTO_LENGTH, ERROR_PREFIX.lengthError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_LOTTO_LENGTH,
+      ERROR_PREFIX.lengthError
+    );
   }
   if (hasNotInteger(winningNumbers)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_INTEGER, ERROR_PREFIX.typeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_INTEGER,
+      ERROR_PREFIX.typeError
+    );
   }
   const isInvalidLottoNumberRange = winningNumbers.some(
     (number) => !isInRange(
@@ -466,25 +484,40 @@ const validateWinningNumbers = (winningNumbers) => {
     )
   );
   if (isInvalidLottoNumberRange) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_LOTTO_NUMBER_RANGE, ERROR_PREFIX.rangeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_LOTTO_NUMBER_RANGE,
+      ERROR_PREFIX.rangeError
+    );
   }
   if (isDuplicate(winningNumbers)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_DUPLICATE_NUMBER, ERROR_PREFIX.duplicateError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_DUPLICATE_NUMBER,
+      ERROR_PREFIX.duplicateError
+    );
   }
 };
 const validateBonusNumber = (bonusNumber, winningNumbers) => {
   if (!Number.isSafeInteger(bonusNumber)) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_INTEGER, ERROR_PREFIX.typeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_INTEGER,
+      ERROR_PREFIX.typeError
+    );
   }
   if (!isInRange(
     bonusNumber,
     LOTTO_RULE.MIN_LOTTO_NUMBER,
     LOTTO_RULE.MAX_LOTTO_NUMBER
   )) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_LOTTO_NUMBER_RANGE, ERROR_PREFIX.rangeError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_LOTTO_NUMBER_RANGE,
+      ERROR_PREFIX.rangeError
+    );
   }
   if (isDuplicate([bonusNumber, ...winningNumbers])) {
-    throw new CustomError(ERROR_MESSAGE.INVALID_DUPLICATE_BONUS_NUMBER, ERROR_PREFIX.duplicateError);
+    throw new CustomError(
+      ERROR_MESSAGE.INVALID_DUPLICATE_BONUS_NUMBER,
+      ERROR_PREFIX.duplicateError
+    );
   }
 };
 const getIntersection = (array1, array2) => {
